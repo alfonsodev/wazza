@@ -21,16 +21,28 @@ class WazzaCommand extends Command {
       if (confirmation) {
         const files = utils.getDirFiles(args.input);
         let header = true;
-        await Promise.all(
-          files.map(async file => {
-            const data = await readFile(args.input + file, flags.date || "");
-            console.log(toCSV(data, header));
-            if (header) {
-              header = false;
-            }
-          })
-        );
-        process.exit(0);
+        if (flags.format === "json") {
+          const datas = [];
+          await Promise.all(
+            files.map(async file => {
+              const data = await readFile(args.input + file, flags.date || "");
+              datas.push(data);
+            })
+          );
+          console.log(JSON.stringify(Array.prototype.concat.apply([], datas)));
+          process.exit(0);
+        } else if (flags.format === "csv") {
+          await Promise.all(
+            files.map(async file => {
+              const data = await readFile(args.input + file, flags.date || "");
+              console.log(toCSV(data, header));
+              if (header) {
+                header = false;
+              }
+            })
+          );
+          process.exit(0);
+        }
       } else {
         process.exit(0);
       }
