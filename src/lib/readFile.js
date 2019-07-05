@@ -7,9 +7,12 @@ const str = require("string-to-stream");
 const utils = require("./utils");
 const fs = require("fs");
 const pushid = require("pushid");
+const { CLIError } = require("@oclif/errors");
 
 const readFile = (dataFilePath, dateFormat = "") => {
-  let fileDescriptor;
+  if (!fs.existsSync(dataFilePath)) {
+    throw new CLIError(`File ${dataFilePath} not found`);
+  }
   const data = [];
   return new Promise((resolve, reject) => {
     let message = "";

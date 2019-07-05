@@ -22,7 +22,7 @@ Then you can run wazza command, for example
 
 ```
 cd ~/Downloads
-wazza -f csv _chat.txt > export.csv
+wazza _chat.txt > export.csv
 ```
 
 ## Options

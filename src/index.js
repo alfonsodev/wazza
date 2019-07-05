@@ -3,11 +3,13 @@
 const readFile = require("./lib/readFile");
 const toCSV = require("./lib/toCSV");
 const { Command, flags } = require("@oclif/command");
+const { CLIError } = require("@oclif/errors");
 
 class WazzaCommand extends Command {
   async run() {
     const { flags, args } = this.parse(WazzaCommand);
     const data = await readFile(args.input, flags.date || "");
+
     if (flags.format === "csv") {
       console.log(toCSV(data));
     } else if (flags.format === "json") {
@@ -20,7 +22,7 @@ WazzaCommand.description = `Wazza is a whatsapp backup parser
 
 It supports csv and json file formats
 - Example, exporting to csv:
-wazza -f csv _chat.txt > export.csv
+wazza _chat.txt > export.csv
 
 - Example exporting to json:
 wazza -f json _chat.txt > export.json
@@ -45,7 +47,12 @@ WazzaCommand.flags = {
   version: flags.version({ char: "v" }),
   // add --help flag to show CLI version
   help: flags.help({ char: "h" }),
-  format: flags.string({ char: "f", description: "csv or json" }),
+  format: flags.string({
+    char: "f",
+    default: "csv",
+    options: ["csv", "json"],
+    description: "csv or json"
+  }),
   date: flags.string({
     char: "d",
     description: "date format, see https://momentjs.com for all posible formats"
