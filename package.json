@@ -1,0 +1,37 @@
+{
+  "name": "wazza",
+  "version": "1.0.3",
+  "description": "Parses whatsapp backup txt file to json or csv formats",
+  "main": "src/index.js",
+  "bin": {
+    "wazza": "./bin/run"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "files": [
+    "/bin",
+    "/src",
+    "README.md"
+  ],
+  "author": "alfonsodev",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alfonsodev/wazza.git"
+  },
+  "dependencies": {
+    "@oclif/command": "^1.5.15",
+    "@oclif/config": "^1.13.0",
+    "@oclif/plugin-help": "^2.2.0",
+    "extract-emoji": "^1.0.2",
+    "json2csv": "^4.5.1",
+    "moment": "^2.24.0",
+    "n-readlines": "^1.0.0",
+    "prettyjson": "^1.2.1",
+    "pushid": "^1.0.0",
+    "read-lines": "^0.1.4",
+    "string-to-stream": "^2.0.0"
+  }
+}
