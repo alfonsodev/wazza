@@ -15,7 +15,7 @@ const readFile = (dataFilePath, dateFormat = "") => {
     let message = "";
     const liner = new lineByLine(dataFilePath);
     let rawLine;
-    var channel = "";
+    let channel = "";
     while ((rawLine = liner.next())) {
       let line = rawLine.toString("utf-8");
       let exp = /\[(.*?)\]/g;
@@ -32,7 +32,7 @@ const readFile = (dataFilePath, dateFormat = "") => {
           results[0] + " " + results[1],
           "DD/MM/YYYY HH:mm:ss"
         );
-        var event_type = "";
+        let event_type = "";
         const reg_exp_left = / left$/g;
         let number = utils.extractNumber(line);
         if (
@@ -70,4 +70,5 @@ const readFile = (dataFilePath, dateFormat = "") => {
     resolve(data);
   });
 };
+
 module.exports = readFile;
