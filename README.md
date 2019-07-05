@@ -1,8 +1,15 @@
 # Wazza
 
 Wazza is a utility to parse whatsapp backup files to csv or json file formats.
-It supports csv and json file formats.
-** only tested for group backups **
+It supports csv and json file formats. **only tested for group backups**
+
+## Features:
+
+- √ group chat exports
+- ? one to one chat exports
+- √ csv and json file formats
+- √ individual .txt files
+- √ directories of .txt (files are combined into one csv or json export)
 
 ## How to export Whatsapp group conversations.
 

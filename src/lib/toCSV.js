@@ -1,6 +1,6 @@
 const { parse } = require("json2csv");
 
-const toCSV = content => {
+const toCSV = (content, header = true) => {
   const fields = [
     "platform",
     "channel",
