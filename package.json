@@ -1,6 +1,6 @@
 {
   "name": "wazza",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Parses whatsapp backup txt file to json or csv formats",
   "main": "src/index.js",
   "bin": {
